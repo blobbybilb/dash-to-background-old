@@ -1,4 +1,4 @@
-# dune exec --watch --root . ./dash_to_background.exe
+# dune build
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /Users/blob/.cache/dune/db
@@ -20,4 +20,8 @@
 #        }
 #  ; instrument_with = []
 #  }
-$ /Users/blob/.opam/default/bin/ocamlc.opt -config > /var/folders/cg/szfww3p551l67p89v05czpmm0000gn/T/dune_458109_output
+$ /Users/blob/.opam/default/bin/ocamlc.opt -config > /var/folders/cg/szfww3p551l67p89v05czpmm0000gn/T/dune_3a7100_output
+$ (cd _build/default && .ppx/1ce4f37be1ba1958555bbfe8647b1f6d/ppx.exe -o commands.pp.ml --impl commands.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && .ppx/1ce4f37be1ba1958555bbfe8647b1f6d/ppx.exe -o test_stuff.pp.ml --impl test_stuff.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && .ppx/1ce4f37be1ba1958555bbfe8647b1f6d/ppx.exe -o server.pp.ml --impl server.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && .ppx/1ce4f37be1ba1958555bbfe8647b1f6d/ppx.exe -o data.pp.ml --impl data.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)

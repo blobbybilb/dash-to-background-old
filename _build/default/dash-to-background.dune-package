@@ -1,0 +1,4 @@
+(lang dune 3.14)
+(name dash-to-background)
+(sections (lib .) (doc ../../doc/dash-to-background))
+(files (lib (META dune-package opam)) (doc (README.md)))
