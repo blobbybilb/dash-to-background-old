@@ -13,6 +13,9 @@ Run the server: `-- -background` (put that in crontab or something)
 -- -list # List running commands
 # -> ID 100 | Reload: false | Command: <command> | Output file: <file>
 
+-- -listall # List all commands
+# -> ID 100 | Reload: false | Command: <command> | Output file: <file> | Status: Running
+
 -- -stop <id> # Stop a command
 # -> Stopped (ID 100)
 
@@ -21,4 +24,7 @@ Run the server: `-- -background` (put that in crontab or something)
 
 -- -rerun <id> # Stop and rerun a command
 # -> Stopped (ID 100)
+
+-- -cleanup # Archive all stopped commands
+# -> Archived 1 commands
 ```

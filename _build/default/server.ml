@@ -1,7 +1,7 @@
 let router =
   Dream.router
     [
-      Dream.get "/list-commands" (fun _ -> Dream.json "Good morning, world!");
+      Dream.get "/list-commands" (fun _ -> Dream.respond "list-commands");
       Dream.get "/:word" (fun request ->
           Dream.html (Dream.param request "word"));
     ]

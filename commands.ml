@@ -1,8 +1,4 @@
-type command = {
-  id : string;
-  command : string;
-  restart : bool;
-  status : string;
-}
-
-type data = { last_id : string; commands : command list }
+let run shell cmd out =
+  let open Feather in
+  let open Feather.Infix in
+  process shell [ "-c"; cmd ] >> out |> run

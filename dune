@@ -1,5 +1,5 @@
 (executable
  (name dash_to_background)
- (libraries dream yaml)
+ (libraries dream yaml feather)
  (preprocess
   (pps ppx_deriving_yaml)))
