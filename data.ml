@@ -9,7 +9,8 @@ type command = {
 type datarecord = { last_id : string; commands : command list }
 [@@deriving yaml]
 
-let data_file_path = "data.yml"
+let data_dir_path = "data"
+let data_file_path = data_dir_path ^ "/data.yml"
 let archive_file_path = "archive.txt"
 
 let serialize datarecord =
@@ -97,3 +98,5 @@ let archive_command id =
 let get_running_commands () =
   let commands = get_commands () in
   List.filter (fun c -> c.status = "running") commands
+
+let get_output_file id = Printf.sprintf "%s/outputs/%s.txt" data_dir_path id
