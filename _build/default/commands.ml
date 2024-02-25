@@ -1,21 +1,17 @@
-let run_command_and_append_out_to_file cmd output_file =
-  let out = open_out_gen [ Open_append; Open_creat ] 0o666 output_file in
-  let pid =
-    Unix.create_process cmd [| cmd |] Unix.stdin
-      (Unix.descr_of_out_channel out)
-      Unix.stderr
+let run_get_pid shell cmd out =
+  let out_descr =
+    Unix.openfile out [ Unix.O_RDWR; Unix.O_CREAT; Unix.O_APPEND ] 0o640
   in
-  let _, status = Unix.waitpid [] pid in
-  close_out out;
-  status
 
-let test_it () =
-  let output_file = "output.txt" in
-  let cmd = "echo" in
-  let status = run_command_and_append_out_to_file cmd output_file in
-  assert (status = Unix.WEXITED 0);
-  let out = open_in output_file in
-  (* let line = input_line out in *)
-  (* assert (line = "echo"); *)
-  close_in out;
-  Unix.unlink output_file
+  let null_input = Unix.openfile "/dev/null" [ O_RDONLY ] 0o000 in
+
+  Unix.create_process shell [| shell; "-c"; cmd |] null_input out_descr
+    out_descr
+
+(* let runstuff =
+   let shell = "/bin/sh" in
+   let cmd = "while true; do echo hi1; sleep 1; done" in
+   let out = "/Users/blob/Developer/dash-to-background/out.txt" in
+   let pid = run_get_pid shell cmd out in
+   print_endline ("pid: " ^ string_of_int pid);
+   Unix.kill pid *)

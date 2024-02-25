@@ -2,4 +2,4 @@
  (name dash_to_background)
  (libraries dream yaml feather)
  (preprocess
-  (pps ppx_deriving_yaml)))
+  (pps ppx_deriving_yaml lwt_ppx ppx_yojson_conv)))

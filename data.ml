@@ -100,3 +100,15 @@ let get_running_commands () =
   List.filter (fun c -> c.status = "running") commands
 
 let get_output_file id = Printf.sprintf "%s/outputs/%s.txt" data_dir_path id
+
+let set_command_restart id restart =
+  let datarecord = load () in
+  let commands =
+    List.map
+      (fun c -> if c.id = id then { c with restart } else c)
+      datarecord.commands
+  in
+  let new_datarecord = { datarecord with commands } in
+  save new_datarecord
+
+let get_shell () = "/bin/sh"
