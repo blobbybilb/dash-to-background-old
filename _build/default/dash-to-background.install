@@ -1,8 +1,0 @@
-lib: [
-  "_build/install/default/lib/dash-to-background/META"
-  "_build/install/default/lib/dash-to-background/dune-package"
-  "_build/install/default/lib/dash-to-background/opam"
-]
-doc: [
-  "_build/install/default/doc/dash-to-background/README.md"
-]
