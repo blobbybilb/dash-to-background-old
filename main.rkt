@@ -111,6 +111,7 @@
 
 (define (resume-command id)
   (define command (load-command id))
+  (println id)
   (unless (status-running? command)
     (display "Running \n")
     (run-command command)))
@@ -153,8 +154,10 @@
   (define non-restarting-commands
     (filter (lambda (command) (eq? (command-restart command) false)) running-commands))
 
+
+
   (for-each (lambda (command)
-              (unless (is-running? command) (resume-command (command-id command)))) restarting-commands)
+              (unless (is-running? command) (run-command command))) restarting-commands)
   (for-each (lambda (command)
               (unless (is-running? command) (stop-command (command-id command)))) non-restarting-commands))
 
